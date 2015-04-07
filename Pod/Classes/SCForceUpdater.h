@@ -15,9 +15,8 @@
                   baseURL:(NSString *)baseURL
        versionAPIEndpoint:(NSString *)versionAPIEndpoint;
 + (id)sharedUpdater;
+- (void)checkForUpdate;
 
 + (void)setAlwaysUseMainBundle:(bool)alwaysUseMainBundle;
-
-- (void)checkForUpdate;
 
 @end
