@@ -10,4 +10,6 @@
 
 @interface SCViewController : UIViewController
 
+- (IBAction)checkForUpdateButtonClicked:(id)sender;
+
 @end

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Richard Szabo. All rights reserved.
 //
 
+#import <SCForceUpdater/SCForceUpdater.h>
+
 #import "SCViewController.h"
 
 @interface SCViewController ()
@@ -14,16 +16,23 @@
 
 @implementation SCViewController
 
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Button actions
+
+- (IBAction)checkForUpdateButtonClicked:(id)sender
+{
+    [[SCForceUpdater sharedUpdater] checkForUpdate];
 }
 
 @end

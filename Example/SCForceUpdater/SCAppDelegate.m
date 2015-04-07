@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Richard Szabo. All rights reserved.
 //
 
-#import "SCAppDelegate.h"
-
 #import <SCForceUpdater/SCForceUpdater.h>
+
+#import "SCAppDelegate.h"
 
 @implementation SCAppDelegate
 
