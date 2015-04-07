@@ -1,0 +1,34 @@
+<html lang='en'>
+  <head>
+    <title>SCForceUpdater - TestServer </title>
+
+    <link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' />
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+  </head>
+  <body class='container'>
+    <h1>SCForceUpdater - TestServer</h1>
+
+    <form method='post' action='set-version'>
+      <div class='form-group'>
+        <label for='version'>Version</label>
+        <input id='version' name='version' class='form-control' type='text' placeholder='1.0.0' value=<%= version %> />
+      </div>
+
+      <div class='form-group'>
+        <label for='type'>Update Type</label>
+        <select id='type' name='type' class='form-control'>
+          <option <%= (type == 'soft') ? 'selected' : '' %>>soft</option>
+          <option <%= (type == 'hard') ? 'selected' : '' %>>hard</option>
+        </select>
+      </div>
+
+      <button class='btn btn-primary' type='submit'>Save</button>
+    </form>
+
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+  </body>
+</html>
