@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'SCForceUpdater', :exclusive => true do
+  pod "SCForceUpdater", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "SCForceUpdater", :path => "../"
+
+  
+end
