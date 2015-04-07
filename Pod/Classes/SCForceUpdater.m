@@ -19,13 +19,13 @@
 @property (nonatomic, strong) NSString *iTunesAppId;
 @property (nonatomic, strong) SCNetworkManager *networkManager;
 
-@property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong) UIAlertView *softUpdateAlertView;
 @property (nonatomic, strong) UIAlertView *hardUpdateAlertView;
 
 @end
 
 static bool alwaysUseMainBundle;
+static NSString *displayName;
 
 @implementation SCForceUpdater
 
@@ -40,7 +40,7 @@ static bool alwaysUseMainBundle;
         return nil;
     }
 
-    sharedUpdater.displayName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    displayName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     sharedUpdater.iTunesAppId = ITunesAppId;
     sharedUpdater.networkManager = [[SCNetworkManager alloc] initWithBaseURL:baseURL
                                                           versionAPIEndpoint:versionAPIEndpoint];
@@ -130,7 +130,7 @@ static bool alwaysUseMainBundle;
 
     NSString *softMessage
     = [NSString stringWithFormat:[self localize:@"sc.force-updater.soft.message"
-                                    withComment:@"Soft message text"], _displayName, version];
+                                    withComment:@"Soft message text"], displayName, version];
 
     // display alert
     self.softUpdateAlertView = [[UIAlertView alloc] initWithTitle:[self localize:@"sc.force-updater.soft.title"
@@ -195,7 +195,7 @@ static bool alwaysUseMainBundle;
 
     NSString *hardMessage
     = [NSString stringWithFormat:[self localize:@"sc.force-updater.hard.message"
-                                    withComment:@"Hard message text"], _displayName, version];
+                                    withComment:@"Hard message text"], displayName, version];
 
     // display alert
     self.hardUpdateAlertView = [[UIAlertView alloc] initWithTitle:[self localize:@"sc.force-updater.hard.title"
@@ -245,6 +245,11 @@ static bool alwaysUseMainBundle;
 + (void)setAlwaysUseMainBundle:(bool)_alwaysUseMainBundle
 {
     alwaysUseMainBundle = _alwaysUseMainBundle;
+}
+
++ (void)setDisplayName:(NSString *)_displayName
+{
+    displayName = _displayName;
 }
 
 + (NSBundle *)bundle

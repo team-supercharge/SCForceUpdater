@@ -44,9 +44,9 @@ A good place to do this at the beginning of your application delegate's `applica
 
 You can also customize the localization of the application: first you should set `setAlwaysUseMainBundle:` to YES, after this you should be able to redefine the following locales:
 
-| Key                 | Meaning                                |
+| Key                            | Meaning                                |
 |-------------------------------:|---------------------------------------:|
-|sc.force-updater.soft.title    | Title for soft update                  |
+|sc.force-updater.soft.title     | Title for soft update                  |
 |sc.force-updater.soft.message   | Message for soft update                |
 |sc.force-updater.soft.update    | Update button text for soft update     |
 |sc.force-updater.soft.later     | Later button text for soft update      |
@@ -54,6 +54,12 @@ You can also customize the localization of the application: first you should set
 |sc.force-updater.hard.title     | Title for hard update                  |
 |sc.force-updater.hard.message   | Message for hard update                |
 |sc.force-updater.hard.update    | Update button text for hard update     |
+
+Messages (sc.force-updater.[soft|hard].message) are formattable. There is two parameter that they can handle: display name of the application and the upcoming version.
+
+Like in the default localization: "Great news! There’s an updated version of {displayName} ({versionNumber}), we recommend you install it."
+
+You can set the displayName of your application if you want. You can achive this by calling the `setDisplayName:` class method with the required name.
 
 ## Contributing
 
