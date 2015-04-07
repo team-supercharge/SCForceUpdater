@@ -1,0 +1,14 @@
+PODS:
+  - SCForceUpdater (0.1.0)
+
+DEPENDENCIES:
+  - SCForceUpdater (from `../`)
+
+EXTERNAL SOURCES:
+  SCForceUpdater:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SCForceUpdater: 0247925ef281148e62ffc5ec4ec3d595c793d4ab
+
+COCOAPODS: 0.35.0
