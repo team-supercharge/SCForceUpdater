@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/jbslabs/SCForceUpdater"
   s.license          = 'MIT'
   s.author           = { "Richard Szabo" => "richard.szabo@supercharge.io" }
-  s.source           = { git: "https://github.com/<GITHUB_USERNAME>/SCForceUpdater.git", tag: s.version.to_s }
+  s.source           = { git: "https://github.com/team-supercharge/SCForceUpdater.git", tag: s.version.to_s }
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
