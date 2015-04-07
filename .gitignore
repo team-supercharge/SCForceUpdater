@@ -23,3 +23,6 @@ DerivedData
 .bundle
 
 Pods/
+
+# Vim swap files
+.*.sw*
