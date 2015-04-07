@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Pod/Classes/**/*'
 
   s.public_header_files = 'Pod/Classes/**/*.h'
+  s.ios.resource_bundle = { 'SCForceUpdater' => ['Pod/Classes/Localization/**/*.strings'] }
 
   s.dependency 'UIAlertView+Blocks'
 end

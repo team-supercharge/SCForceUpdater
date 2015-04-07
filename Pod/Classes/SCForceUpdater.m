@@ -19,14 +19,13 @@
 @property (nonatomic, strong) NSString *iTunesAppId;
 @property (nonatomic, strong) SCNetworkManager *networkManager;
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *softMessage;
-@property (nonatomic, strong) NSString *hardMessage;
-
+@property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong) UIAlertView *softUpdateAlertView;
 @property (nonatomic, strong) UIAlertView *hardUpdateAlertView;
 
 @end
+
+static bool alwaysUseMainBundle;
 
 @implementation SCForceUpdater
 
@@ -41,20 +40,12 @@
         return nil;
     }
 
+    sharedUpdater.displayName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     sharedUpdater.iTunesAppId = ITunesAppId;
     sharedUpdater.networkManager = [[SCNetworkManager alloc] initWithBaseURL:baseURL
                                                           versionAPIEndpoint:versionAPIEndpoint];
 
     return sharedUpdater;
-}
-
-+ (void)setTitle:(NSString *)title softMessage:(NSString *)softMessage hardMessage:(NSString *)hardMessage
-{
-    SCForceUpdater *sharedUpdater = [self sharedUpdater];
-
-    sharedUpdater.title = title;
-    sharedUpdater.softMessage = softMessage;
-    sharedUpdater.hardMessage = hardMessage;
 }
 
 + (id)sharedUpdater
@@ -137,12 +128,21 @@
         return;
     }
 
+    NSString *softMessage
+    = [NSString stringWithFormat:[self localize:@"sc.force-updater.soft.message"
+                                    withComment:@"Soft message text"], _displayName, version];
+
     // display alert
-    self.softUpdateAlertView = [[UIAlertView alloc] initWithTitle:_title
-                                                         message:[NSString stringWithFormat:_softMessage, version]
+    self.softUpdateAlertView = [[UIAlertView alloc] initWithTitle:[self localize:@"sc.force-updater.soft.title"
+                                                                     withComment:@"Soft title text"]
+                                                          message:softMessage
                                                          delegate:nil
-                                                cancelButtonTitle:@"Update"
-                                                otherButtonTitles:@"No thanks!", @"Later", nil];
+                                                cancelButtonTitle:[self localize:@"sc.force-updater.soft.update"
+                                                                     withComment:@"Update button text"]
+                                                otherButtonTitles:[self localize:@"sc.force-updater.soft.no-thanks"
+                                                                     withComment:@"No thanks! button text"],
+                                                                  [self localize:@"sc.force-updater.soft.later"
+                                                                     withComment:@"Later button text"], nil];
 
     __weak typeof(self) welf = self;
     _softUpdateAlertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex)
@@ -193,11 +193,17 @@
         return;
     }
 
+    NSString *hardMessage
+    = [NSString stringWithFormat:[self localize:@"sc.force-updater.hard.message"
+                                    withComment:@"Hard message text"], _displayName, version];
+
     // display alert
-    self.hardUpdateAlertView = [[UIAlertView alloc] initWithTitle:_title
-                                                          message:[NSString stringWithFormat:_hardMessage, version]
+    self.hardUpdateAlertView = [[UIAlertView alloc] initWithTitle:[self localize:@"sc.force-updater.hard.title"
+                                                                     withComment:@"Hard message title"]
+                                                          message:hardMessage
                                                          delegate:nil
-                                                cancelButtonTitle:@"Update"
+                                                cancelButtonTitle:[self localize:@"sc.force-updater.hard.update"
+                                                                     withComment:@"Update button text"]
                                                 otherButtonTitles:nil];
 
     __weak typeof(self) welf = self;
@@ -227,6 +233,30 @@
 {
     NSString *url = [NSString stringWithFormat:@"itms://itunes.apple.com/us/app/id%@?mt=8", _iTunesAppId];
     return [NSURL URLWithString:url];
+}
+
+#pragma mark - Utility methods
+
+- (NSString *)localize:(NSString *)key withComment:(NSString *)comment
+{
+    return NSLocalizedStringFromTableInBundle(key, @"SCForceUpdaterLocalizable", [SCForceUpdater bundle], comment);
+}
+
++ (void)setAlwaysUseMainBundle:(bool)_alwaysUseMainBundle
+{
+    alwaysUseMainBundle = _alwaysUseMainBundle;
+}
+
++ (NSBundle *)bundle
+{
+    if (alwaysUseMainBundle)
+    {
+        return [NSBundle mainBundle];
+    }
+
+    NSURL *forceUpdaterBundleURL = [[NSBundle mainBundle] URLForResource:@"SCForceUpdater" withExtension:@"bundle"];
+
+    return [NSBundle bundleWithURL:forceUpdaterBundleURL];
 }
 
 @end

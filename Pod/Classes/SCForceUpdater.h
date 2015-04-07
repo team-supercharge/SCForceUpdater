@@ -14,8 +14,9 @@
 + (id)initWithITunesAppId:(NSString *)ITunesAppId
                   baseURL:(NSString *)baseURL
        versionAPIEndpoint:(NSString *)versionAPIEndpoint;
-+ (void)setTitle:(NSString *)title softMessage:(NSString *)softMessage hardMessage:(NSString *)hardMessage;
 + (id)sharedUpdater;
+
++ (void)setAlwaysUseMainBundle:(bool)alwaysUseMainBundle;
 
 - (void)checkForUpdate;
 

@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SCForceUpdater: f152dba5feeb3760d65b5b38289ef9f2c3c11bc5
+  SCForceUpdater: efef4b76288de693d9e0b657a986860f874ccc7a
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
 
 COCOAPODS: 0.35.0
