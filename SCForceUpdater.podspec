@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        You can easily implement force update functionality into your application with this Pod.
                        DESC
-  s.homepage         = "https://github.com/jbslabs/SCForceUpdater"
+  s.homepage         = "https://github.com/team-supercharge/SCForceUpdater"
   s.license          = 'MIT'
   s.author           = { "Richard Szabo" => "richard.szabo@supercharge.io" }
   s.source           = { git: "https://github.com/team-supercharge/SCForceUpdater.git", tag: s.version.to_s }
