@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SCForceUpdater"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "SCForceUpdater"
   s.description      = <<-DESC
                        You can easily implement force update functionality into your application with this Pod.
