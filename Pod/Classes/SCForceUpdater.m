@@ -26,6 +26,8 @@
 
 static bool alwaysUseMainBundle;
 static NSString *displayName;
+static NSString *lastVersionResponseKey;
+static NSString *updateTypeResponseKey;
 
 @implementation SCForceUpdater
 
@@ -41,6 +43,8 @@ static NSString *displayName;
     }
 
     displayName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    lastVersionResponseKey = @"last_version";
+    updateTypeResponseKey  = @"update_type";
     sharedUpdater.iTunesAppId = ITunesAppId;
     sharedUpdater.networkManager = [[SCNetworkManager alloc] initWithBaseURL:baseURL
                                                           versionAPIEndpoint:versionAPIEndpoint];
@@ -77,8 +81,8 @@ static NSString *displayName;
         return;
     }
 
-    NSString *version = jsonObject[@"last_version"];
-    NSString *type    = jsonObject[@"update_type"];
+    NSString *version = jsonObject[lastVersionResponseKey];
+    NSString *type    = jsonObject[updateTypeResponseKey];
 
     // check for available update
     if (version == nil || type == nil)
@@ -235,12 +239,7 @@ static NSString *displayName;
     return [NSURL URLWithString:url];
 }
 
-#pragma mark - Utility methods
-
-- (NSString *)localize:(NSString *)key withComment:(NSString *)comment
-{
-    return NSLocalizedStringFromTableInBundle(key, @"SCForceUpdaterLocalizable", [SCForceUpdater bundle], comment);
-}
+#pragma mark - Configuration methods
 
 + (void)setAlwaysUseMainBundle:(bool)_alwaysUseMainBundle
 {
@@ -250,6 +249,23 @@ static NSString *displayName;
 + (void)setDisplayName:(NSString *)_displayName
 {
     displayName = _displayName;
+}
+
++ (void)setLastVersionResponseKey:(NSString *)_lastVersionResponseKey
+{
+    lastVersionResponseKey = _lastVersionResponseKey;
+}
+
++ (void)setUpdateTypeResponseKey:(NSString *)_updateTypeResponseKey
+{
+    updateTypeResponseKey = _updateTypeResponseKey;
+}
+
+#pragma mark - Utility methods
+
+- (NSString *)localize:(NSString *)key withComment:(NSString *)comment
+{
+    return NSLocalizedStringFromTableInBundle(key, @"SCForceUpdaterLocalizable", [SCForceUpdater bundle], comment);
 }
 
 + (NSBundle *)bundle
