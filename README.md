@@ -39,8 +39,14 @@ pod "SCForceUpdater"
 
 SCForceUpdater provides class methods to configure it.
 
+### Initialization
+
 First you should call SCForceUpdater's initialization method: `initWithITunesAppId:baseURL:versionAPIEndpoint:`.
 A good place to do this at the beginning of your application delegate's `application:didFinishLaunchingWithOptions:` method.
+
+Also you should call the `checkForUpdate` method on the `[SCForceUpdater sharedUpdater]` singleton instance. We recommand to do this in the `applicationDidBecomeActive:` method of your application delegate class.
+
+### Localizations
 
 You can also customize the localization of the application: first you should set `setAlwaysUseMainBundle:` to YES, after this you should be able to redefine the following locales:
 
@@ -59,7 +65,15 @@ Messages (sc.force-updater.[soft|hard].message) are formattable. There is two pa
 
 Like in the default localization: "Great news! There’s an updated version of {displayName} ({versionNumber}), we recommend you install it."
 
+### Display name of the application
+
 You can set the displayName of your application if you want. You can achive this by calling the `setDisplayName:` class method with the required name.
+
+### Response keys
+
+We are parsing JSON objects inside the pod. The default keys are: `last_version` for the version key and `update_type` for the update type key.
+
+The defaults can be changed through two setter methods: `setLastVersionResponseKey:` and `setUpdateTypeResponseKey:`.
 
 ## Contributing
 
