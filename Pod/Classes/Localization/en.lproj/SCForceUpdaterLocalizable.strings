@@ -1,4 +1,4 @@
-/* 
+/*
   SCForceUpdaterLocalizable.strings
   Pods
 
@@ -12,6 +12,6 @@
 "sc.force-updater.soft.later"   = "Later";
 "sc.force-updater.soft.no-thanks" = "No thanks!";
 
-"sc.force-updater.hard.title"   = "Hard title";
+"sc.force-updater.hard.title"   = "Hey!";
 "sc.force-updater.hard.message" = "Great news! There’s an updated version of %@ (%@), thanks for updating!";
 "sc.force-updater.hard.update"  = "Update";
