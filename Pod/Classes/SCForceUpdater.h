@@ -16,6 +16,7 @@
        versionAPIEndpoint:(NSString *)versionAPIEndpoint;
 + (id)sharedUpdater;
 - (void)checkForUpdate;
+- (void)checkForUpdateWithCompletionBlock:(void (^)(NSDictionary *jsonObject))completionBlock;
 
 // Configuration
 + (void)setAlwaysUseMainBundle:(bool)alwaysUseMainBundle;

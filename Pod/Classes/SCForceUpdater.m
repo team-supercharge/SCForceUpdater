@@ -71,6 +71,18 @@ static NSString *updateTypeResponseKey;
     }];
 }
 
+- (void)checkForUpdateWithCompletionBlock:(void (^)(NSDictionary *jsonObject))completionBlock
+{
+    [_networkManager fetchCurrentVersionWithCompletion:^(NSDictionary *jsonObject) {
+        [self handleResponse:jsonObject];
+
+        if (completionBlock)
+        {
+            completionBlock(jsonObject);
+        }
+    }];
+}
+
 #pragma mark - Utility methods
 
 - (void)handleResponse:(NSDictionary *)jsonObject
