@@ -247,7 +247,7 @@ static NSString *updateTypeResponseKey;
 
 - (NSURL *)iTunesAppURL
 {
-    NSString *url = [NSString stringWithFormat:@"itms://itunes.apple.com/us/app/id%@?mt=8", _iTunesAppId];
+    NSString *url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?mt=8", _iTunesAppId];
     return [NSURL URLWithString:url];
 }
 
