@@ -1,6 +1,6 @@
 PODS:
-  - SCForceUpdater (0.1.1):
-    - UIAlertView+Blocks
+  - SCForceUpdater (1.0.0):
+    - UIAlertView+Blocks (~> 0.8.1)
   - UIAlertView+Blocks (0.8.1)
 
 DEPENDENCIES:
@@ -8,10 +8,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SCForceUpdater:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  SCForceUpdater: 0aea8499a4462e4cdc94ff50e7422f668fcbd041
+  SCForceUpdater: e2e751052f8d3af3148ce158a07231e37fa7614b
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0
