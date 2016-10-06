@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 ipiit AB. All rights reserved.
 //
 
-#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import "SCForceUpdater.h"
 
 #import "NSString+CompareToVersion.h"
+#import "UIAlertView+TapBlock.h"
 #import "NSBundle+Versions.h"
 
-#import "SCForceUpdater.h"
 #import "SCNetworkManager.h"
 
 @interface SCForceUpdater ()
