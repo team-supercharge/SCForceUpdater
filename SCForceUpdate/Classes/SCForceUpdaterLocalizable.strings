@@ -1,0 +1,17 @@
+/*
+  SCForceUpdaterLocalizable.strings
+  Pods
+
+  Created by Richard Szabo on 07/04/15.
+
+*/
+
+"sc.force-updater.soft.title" = "Hey!";
+"sc.force-updater.soft.message" = "Great news! There’s an updated version of %@ (%@), we recommend you install it.";
+"sc.force-updater.soft.update" = "Update";
+"sc.force-updater.soft.later" = "Later";
+"sc.force-updater.soft.no-thanks" = "No thanks!";
+
+"sc.force-updater.hard.title" = "Hey!";
+"sc.force-updater.hard.message" = "Great news! There’s an updated version of %@ (%@), thanks for updating!";
+"sc.force-updater.hard.update" = "Update";

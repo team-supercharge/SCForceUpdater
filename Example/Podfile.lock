@@ -1,14 +1,23 @@
 PODS:
-  - SCForceUpdater (1.0.0)
+  - SCForceUpdate (1.1.1)
+  - SwiftLint (0.26.0)
 
 DEPENDENCIES:
-  - SCForceUpdater (from `../`)
+  - SCForceUpdate (from `../`)
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftLint
 
 EXTERNAL SOURCES:
-  SCForceUpdater:
+  SCForceUpdate:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SCForceUpdater: 5316b97ea8ffc9222734ea5b972e1d2cf3aa95ed
+  SCForceUpdate: dace1acd6e5c2a0fb1d880d6eba02123bf0857c7
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: b4642bc25768fc7b606e7d71232c82511b96a639
+
+COCOAPODS: 1.5.3
